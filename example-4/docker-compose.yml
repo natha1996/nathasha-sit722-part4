@@ -1,0 +1,25 @@
+version: '3'
+services:
+  book_catalog:
+    image: natha1week08.azurecr.io/book_catalog:v1
+    build:
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    container_name: book-catalog
+    platform: linux/amd64
+    ports:
+    - "8000:8000"
+    environment: 
+    - DATABASE_URL=postgresql://week08_ow76_user:vwwUBNha0tNMZFtr29fKO0S5A22ThQ1b@dpg-crr1ki56l47c73cbid6g-a.oregon-postgres.render.com/week08_ow76
+
+  inventory_management:
+    image: natha1week08.azurecr.io/inventory_management:v1
+    build:
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    container_name: inventory-management
+    platform: linux/amd64
+    ports:
+      - "8002:8002"
+    environment: 
+     - DATABASE_URL=postgresql://week08_ow76_user:vwwUBNha0tNMZFtr29fKO0S5A22ThQ1b@dpg-crr1ki56l47c73cbid6g-a.oregon-postgres.render.com/week08_ow76
